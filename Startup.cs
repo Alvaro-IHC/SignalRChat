@@ -26,6 +26,7 @@ namespace SignalRChat
         {
             services.AddRazorPages();
             services.AddSignalR();
+            // services.AddControllers(); //
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +54,7 @@ namespace SignalRChat
             {
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ChatHub>("/chatHub");
+                // endpoints.MapControllers();
             });
         }
     }

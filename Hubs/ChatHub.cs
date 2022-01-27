@@ -1,13 +1,15 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
+using SignalRChat.Hubs.Clients;
+using SignalRChat.Models;
 
 namespace SignalRChat.Hubs
 {
-    public class ChatHub : Hub
+    public class ChatHub : Hub<IChatClient>
     {
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(ChatMessage message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.ReceiveMessage(message);
         }
     }
 }
